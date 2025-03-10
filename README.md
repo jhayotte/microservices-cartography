@@ -1,67 +1,82 @@
 
-# Microservices Cartography 
+# Microservice Cartography: API and UI with Docker Compose
 
-This project provides a visual representation of microservices interactions using D3.js. It helps in understanding the hierarchical structure and dependencies between different microservices.
+This monorepo project consists of a Go API and a UI built with TypeScript and D3.js, orchestrated using Docker Compose. The API serves static JSON data, and the UI visualizes this data using a radial tidy tree.
 
-## Table of Contents
+## Project Structure
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Customization](#customization)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
+```
+microservice-cartography/
+│
+├─ api/
+│  ├─ Dockerfile
+│  ├─ go.mod
+│  ├─ go.sum
+│  └─ main.go
+│
+├─ ui/
+│  ├─ Dockerfile
+│  ├─ package.json
+│  ├─ tsconfig.json
+│  ├─ src/
+│  │  ├─ index.html
+│  │  ├─ styles.css
+│  │  └─ index.ts
+│
+├─ docker-compose.yml
+└─ README.md
+```
 
-## Features
+## Setup and Installation
 
-- Visualize microservices as a tree structure.
-- Easy to customize and extend.
-- Built with TypeScript for type safety.
+### Prerequisites
 
-## Installation
+- Docker and Docker Compose installed on your machine.
+- Basic knowledge of Go and TypeScript.
 
-1. **Clone the repository**:
+### Steps to Run the Project
+
+1. **Clone the Repository**
+
    ```bash
-   git clone https://github.com/jhayotte/microservices-cartography.git
+   git clone https://github.com/jhayotte/microservices-cartography.github
    cd microservices-cartography
    ```
 
-2. **Install dependencies**:
+2. **Build and Run with Docker Compose**
+
    ```bash
-   npm install
+   docker-compose up --build
    ```
 
-## Usage
+3. **Access the Application**
 
-1. **Start the development server**:
-   ```bash
-   npm start
-   ```
+   - The API will be available at `http://localhost:8080`.
+   - The UI will be available at `http://localhost:1234`.
 
-2. **Open your browser** and navigate to `http://localhost:1234` to see the visualization.
+## API (Go)
 
-3. **Build the project** for production:
-   ```bash
-   npm run build
-   ```
+- **Description**: A simple Go API that serves static JSON data.
+- **Endpoint**: `/data` - Returns hierarchical data in JSON format.
+- **CORS**: Enabled to allow requests from the UI.
 
-## Customization
+## UI (TypeScript and D3.js)
 
-- **Data Structure**: Modify the `treeData` object in `index.ts` to reflect your microservices hierarchy.
-- **Styling**: Customize the CSS in `styles.css` to change the appearance of the tree.
-- **Layout**: Adjust the dimensions and layout settings in `index.ts` to fit your needs.
+- **Description**: A UI built with TypeScript and D3.js that visualizes hierarchical data using a radial tidy tree.
+- **Features**:
+  - Fetches data from the API.
+  - Allows selecting different levels of the hierarchy to display.
 
-## Dependencies
+## Docker Compose
 
-- **D3.js**: For creating the tree visualization.
-- **TypeScript**: For type safety and better development experience.
-- **Parcel**: For bundling and serving the application.
+- **Services**:
+  - `api`: The Go API service.
+  - `ui`: The UI service built with Parcel.
 
 ## Contributing
 
-Contributions are welcome! Please open an issue or submit a pull request.
+Feel free to contribute to this project by opening issues or submitting pull requests.
 
 ## License
 
-This project is licensed under the ISC License.
+This project is licensed under the MIT License.
