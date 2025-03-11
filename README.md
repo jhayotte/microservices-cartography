@@ -73,6 +73,11 @@ microservice-cartography/
   - `api`: The Go API service.
   - `ui`: The UI service built with Parcel.
 
+## Todo
+[] add an elastic search with APM traces
+[] exposes these traces in the UI through the API
+[] find the best way to convert or expose apm traces to API.
+
 ## Contributing
 
 Feel free to contribute to this project by opening issues or submitting pull requests.
